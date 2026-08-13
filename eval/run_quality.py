@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -34,26 +35,38 @@ def extract_response(stdout: str, prompt: str) -> str:
     return s
 
 
-def run_prompt(model: str, prompt: str, max_tokens: int) -> str:
+def _parse_rss(stderr: str) -> int:
+    """Parse macOS /usr/bin/time -l 'maximum resident set size' (bytes) -> MB."""
+    m = re.search(r"([0-9]+)\s+maximum resident set size", stderr)
+    if not m:
+        return 0
+    return int(m.group(1)) // (1024 * 1024)
+
+
+def run_prompt(model: str, prompt: str, max_tokens: int) -> tuple[str, int]:
     out = subprocess.run(
-        ["llama-cli", "-m", model, "-p", prompt, "-n", str(max_tokens),
-         "--temp", "0", "--seed", "42", "-st", "--no-display-prompt"],
+        ["/usr/bin/time", "-l", "llama-cli", "-m", model, "-p", prompt,
+         "-n", str(max_tokens), "--temp", "0", "--seed", "42", "-st",
+         "--no-display-prompt"],
         capture_output=True, text=True, timeout=300,
     )
-    return extract_response(out.stdout, prompt)
+    rss_mb = _parse_rss(out.stderr)
+    return extract_response(out.stdout, prompt), rss_mb
 
 
 def run_quant(model: str, prompts: list[dict], answers: dict) -> dict:
     results = []
     passed = 0
+    peak_ram_mb = 0
     for p in prompts:
-        output = run_prompt(model, p["prompt"], p["max_tokens"])
+        output, rss_mb = run_prompt(model, p["prompt"], p["max_tokens"])
+        peak_ram_mb = max(peak_ram_mb, rss_mb)
         ok = score_output(output, answers[p["id"]])
         passed += ok
         results.append({"id": p["id"], "category": p["category"], "pass": ok,
                         "output": output.strip()})
     return {"passed": passed, "total": len(prompts), "score": passed / len(prompts),
-            "results": results}
+            "peak_ram_mb": peak_ram_mb, "results": results}
 
 
 def main() -> None:
@@ -67,7 +80,8 @@ def main() -> None:
         print(f"quality {name}...")
         data = run_quant(path, prompts, answers)
         (Path("results") / f"quality_{name}.json").write_text(json.dumps(data, indent=2))
-        print(f"  {data['passed']}/{data['total']} ({data['score']:.2%})")
+        print(f"  {data['passed']}/{data['total']} ({data['score']:.2%}), "
+              f"peak {data['peak_ram_mb']} MB")
 
 
 if __name__ == "__main__":

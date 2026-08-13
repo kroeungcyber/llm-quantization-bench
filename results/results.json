@@ -1,0 +1,50 @@
+{
+  "model": "Qwen2.5-3B-Instruct",
+  "hardware": "Apple M4, 16GB RAM, Metal",
+  "llama_cpp_version": "v10360",
+  "bench_params": {
+    "prompt": 512,
+    "generation": 128,
+    "reps": 3,
+    "temp": 0,
+    "seed": 42
+  },
+  "quants": {
+    "F16": {
+      "size_gb": 5.8,
+      "prompt_tok_s": 514.5,
+      "gen_tok_s": 15.2,
+      "ttft_ms": 62.2,
+      "peak_ram_mb": 7157,
+      "quality": 19,
+      "quality_pct": 95.0
+    },
+    "Q8_0": {
+      "size_gb": 3.1,
+      "prompt_tok_s": 537.2,
+      "gen_tok_s": 27.9,
+      "ttft_ms": 59.6,
+      "peak_ram_mb": 4399,
+      "quality": 19,
+      "quality_pct": 95.0
+    },
+    "Q5_K_M": {
+      "size_gb": 2.1,
+      "prompt_tok_s": 477.1,
+      "gen_tok_s": 38.7,
+      "ttft_ms": 67.1,
+      "peak_ram_mb": 3387,
+      "quality": 18,
+      "quality_pct": 90.0
+    },
+    "Q4_K_M": {
+      "size_gb": 1.8,
+      "prompt_tok_s": 518.5,
+      "gen_tok_s": 43.8,
+      "ttft_ms": 61.7,
+      "peak_ram_mb": 3105,
+      "quality": 17,
+      "quality_pct": 85.0
+    }
+  }
+}
