@@ -1,0 +1,22 @@
+{
+  "arith_1": {"type": "arithmetic", "expected": 1081},
+  "arith_2": {"type": "arithmetic", "expected": 48},
+  "arith_3": {"type": "arithmetic", "expected": 36},
+  "arith_4": {"type": "arithmetic", "expected": 1024},
+  "arith_5": {"type": "arithmetic", "expected": 25},
+  "fact_1": {"type": "exact-fact", "expected": "canberra"},
+  "fact_2": {"type": "exact-fact", "expected": "1945"},
+  "fact_3": {"type": "exact-fact", "expected": "au"},
+  "fact_4": {"type": "exact-fact", "expected": "william shakespeare"},
+  "fact_5": {"type": "exact-fact", "expected": "jupiter"},
+  "code_1": {"type": "code", "func": "is_palindrome", "tests": [["racecar", true], ["hello", false], ["", true]]},
+  "code_2": {"type": "code", "func": "fibonacci", "tests": [[0, 0], [1, 1], [10, 55]]},
+  "code_3": {"type": "code", "func": "fizzbuzz", "tests": [[15, ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]]]},
+  "code_4": {"type": "code", "func": "sum_list", "tests": [[[1,2,3], 6], [[-1,1], 0]]},
+  "code_5": {"type": "code", "func": "invert_dict", "tests": [[{"a":1}, {"1":"a"}]]},
+  "inst_1": {"type": "instruction", "rule": "three_items"},
+  "inst_2": {"type": "instruction", "rule": "exact_json"},
+  "inst_3": {"type": "instruction", "rule": "word_repeat"},
+  "inst_4": {"type": "instruction", "rule": "sorted_list"},
+  "inst_5": {"type": "instruction", "rule": "single_word"}
+}

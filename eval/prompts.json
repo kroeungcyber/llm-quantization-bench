@@ -1,0 +1,24 @@
+{
+  "prompts": [
+    {"id": "arith_1", "category": "arithmetic", "prompt": "What is 47 multiplied by 23? Answer with just the number.", "max_tokens": 16},
+    {"id": "arith_2", "category": "arithmetic", "prompt": "A train travels 120 km in 2.5 hours. What is its average speed in km/h? Answer with just the number.", "max_tokens": 16},
+    {"id": "arith_3", "category": "arithmetic", "prompt": "What is 15% of 240? Answer with just the number.", "max_tokens": 16},
+    {"id": "arith_4", "category": "arithmetic", "prompt": "What is 2^10? Answer with just the number.", "max_tokens": 16},
+    {"id": "arith_5", "category": "arithmetic", "prompt": "If x = 3 and y = 4, what is x^2 + y^2? Answer with just the number.", "max_tokens": 16},
+    {"id": "fact_1", "category": "exact-fact", "prompt": "What is the capital of Australia?", "max_tokens": 16},
+    {"id": "fact_2", "category": "exact-fact", "prompt": "In what year did World War II end?", "max_tokens": 16},
+    {"id": "fact_3", "category": "exact-fact", "prompt": "What is the chemical symbol for gold?", "max_tokens": 16},
+    {"id": "fact_4", "category": "exact-fact", "prompt": "Who wrote 'Romeo and Juliet'?", "max_tokens": 16},
+    {"id": "fact_5", "category": "exact-fact", "prompt": "What is the largest planet in our solar system?", "max_tokens": 16},
+    {"id": "code_1", "category": "code", "prompt": "Write a Python function is_palindrome(s) that returns True if the string s is a palindrome, else False. Output only the Python code, no explanation.", "max_tokens": 192},
+    {"id": "code_2", "category": "code", "prompt": "Write a Python function fibonacci(n) that returns the nth Fibonacci number (fibonacci(0)=0, fibonacci(1)=1). Output only the Python code.", "max_tokens": 192},
+    {"id": "code_3", "category": "code", "prompt": "Write a Python function fizzbuzz(n) that returns a list where multiples of 3 are 'Fizz', multiples of 5 are 'Buzz', both are 'FizzBuzz', else the number, for 1..n. Output only the Python code.", "max_tokens": 192},
+    {"id": "code_4", "category": "code", "prompt": "Write a Python function sum_list(nums) that returns the sum of a list of numbers. Output only the Python code.", "max_tokens": 192},
+    {"id": "code_5", "category": "code", "prompt": "Write a Python function invert_dict(d) that returns a dict mapping values to keys. Output only the Python code.", "max_tokens": 192},
+    {"id": "inst_1", "category": "instruction", "prompt": "List exactly three reasons to back up data. Output only the three items, numbered.", "max_tokens": 64},
+    {"id": "inst_2", "category": "instruction", "prompt": "Output only this JSON: {\"status\": \"ok\"}", "max_tokens": 32},
+    {"id": "inst_3", "category": "instruction", "prompt": "Write the word 'banana' three times separated by spaces and nothing else.", "max_tokens": 16},
+    {"id": "inst_4", "category": "instruction", "prompt": "Sort these numbers ascending and output only the sorted list: 9, 1, 5, 3, 7", "max_tokens": 32},
+    {"id": "inst_5", "category": "instruction", "prompt": "Answer with a single word: is the sky blue?", "max_tokens": 8}
+  ]
+}
