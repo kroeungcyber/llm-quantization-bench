@@ -1,0 +1,24 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -e ".[dev]" -r requirements.txt
+      - name: Lint
+        run: flake8 bench eval tests plot.py
+      - name: Typecheck
+        run: mypy bench eval plot.py
+      - name: Test
+        run: pytest -q
+      - name: Regenerate chart from committed results
+        run: python plot.py && test -s results/quant_tradeoffs.png

@@ -20,6 +20,9 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+[tool.setuptools.packages.find]
+include = ["eval*", "bench*"]
+
 [tool.mypy]
 overrides = [
     { module = "matplotlib.*", ignore_missing_imports = true },
