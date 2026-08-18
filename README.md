@@ -1,5 +1,7 @@
 # llm-quantization-bench
 
+[![CI](https://github.com/kroeungcyber/llm-quantization-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/kroeungcyber/llm-quantization-bench/actions/workflows/ci.yml)
+
 Throughput / latency / quality trade-offs of quantized open-source LLMs on commodity hardware.
 
 ## What / why
